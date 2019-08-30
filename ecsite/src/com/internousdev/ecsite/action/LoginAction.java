@@ -5,10 +5,8 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
-import com.internousdev.ecsite.dao.BuyItemDAO;
 import com.internousdev.ecsite.dao.ItemListDAO;
 import com.internousdev.ecsite.dao.LoginDAO;
-import com.internousdev.ecsite.dto.BuyItemDTO;
 import com.internousdev.ecsite.dto.ItemInfoDTO;
 import com.internousdev.ecsite.dto.LoginDTO;
 import com.opensymphony.xwork2.ActionSupport;
@@ -19,7 +17,8 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	public Map<String, Object> session;
 	private LoginDAO loginDAO = new LoginDAO();
 	private LoginDTO loginDTO = new LoginDTO();
-	private BuyItemDAO buyItemDAO = new BuyItemDAO();
+//	private BuyItemDAO buyItemDAO = new BuyItemDAO();
+	private String itemName;
 
 	public String execute() {
 
@@ -35,18 +34,15 @@ public class LoginAction extends ActionSupport implements SessionAware {
 			list = itemListDAO.getItemListInfo();
 			//変数listをsessionに入れれる
 			session.put("buyItemList", list);
+			session.put("itemName",itemName);
+			session.put("login_user_id", loginDTO.getLoginId());
+			//管理者でログインする
 			if ((loginDTO.getAdminFlg() != null)&& (loginDTO.getAdminFlg().equals("1"))) {
 				session.put("login_user_id", loginDTO.getLoginId());
 				result = "admin";
 			} else {
 				result = SUCCESS;
-				BuyItemDTO buyItemDTO = buyItemDAO.getBuyItemInfo();
-				session.put("login_user_id", loginDTO.getLoginId());
-				session.put("id", buyItemDTO.getId());
-				session.put("buyItem_name", buyItemDTO.getItemName());
-				session.put("buyItem_price", buyItemDTO.getItemPrice());
-				session.put("item_s", buyItemDTO.getItemStock());
-			}
+     		}
 		}
 		return result;
 	}

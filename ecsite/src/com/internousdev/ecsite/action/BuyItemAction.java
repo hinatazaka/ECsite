@@ -8,15 +8,18 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class BuyItemAction extends ActionSupport implements SessionAware{
 	private int count;
+    private int id;
 	private String pay;
 	public Map<String,Object>session;
 	private String ErrorMessage;
+	private int itemPrice;
 
 	public String execute(){
 		String result=SUCCESS;
+		session.put("id",id);
 		session.put("count", count);
 		int intCount=Integer.parseInt(session.get("count").toString());
-		int intPrice=Integer.parseInt(session.get("buyItem_price").toString());
+		int intPrice=Integer.parseInt(session.get("itemPrice").toString());
 		int itemstock=Integer.parseInt(session.get("item_s").toString());
 		session.put("total_price",intCount * intPrice);
 		String payment;
@@ -31,6 +34,7 @@ public class BuyItemAction extends ActionSupport implements SessionAware{
 			payment="クレジットカード";
 			session.put("pay", payment);
 		}
+		session.get("buyItemList").toString();
 		return result;
 	}
 	public int getCount() {
@@ -58,6 +62,20 @@ public class BuyItemAction extends ActionSupport implements SessionAware{
 	public void setErrorMessage(String errorMessage) {
 		ErrorMessage = errorMessage;
 	}
+
+	public int getItemPrice() {
+		return itemPrice;
+	}
+	public void setItemPrice(int itemPrice) {
+		this.itemPrice = itemPrice;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+
 
 
 }

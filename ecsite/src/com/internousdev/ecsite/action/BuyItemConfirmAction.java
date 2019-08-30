@@ -17,7 +17,8 @@ public class BuyItemConfirmAction extends ActionSupport implements SessionAware{
 				session.get("login_user_id").toString(),
 				session.get("total_price").toString(),
 				session.get("count").toString(),
-				session.get("pay").toString());
+				session.get("pay").toString(),
+				session.get("itemName").toString());
 		if(count>0) {
 			buyItemCompleteDAO.UpdateItemStock(Integer.parseInt(session.get("count").toString()),session.get("id").toString());
 		}

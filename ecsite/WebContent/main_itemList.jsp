@@ -95,7 +95,7 @@ table {
 				<li class="item-name">商品id:<s:property value="id" />
 				<li>商品名:<s:property value="itemName" />
 				<li>値段:<s:property value="itemPrice" /><span>円</span>
-				<li><a href='<s:url action="ItemBuyAction"> <s:param name="id" value="%{id}"/> </s:url>'>購入</a>
+				<li><a href='<s:url action="ItemBuyDetailsAction"> <s:param name="id" value="%{id}"/> </s:url>'>購入</a>
 			</ul></div>
 		</s:iterator>
 	</div>

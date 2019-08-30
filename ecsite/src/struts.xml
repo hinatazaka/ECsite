@@ -21,7 +21,7 @@
   <result name="admin">admin.jsp</result>
  </action>
 
-<action name="ItemBuyAction" class="com.internousdev.ecsite.action.ItemBuyAction" method="execute">
+<action name="ItemBuyDetailsAction" class="com.internousdev.ecsite.action.ItemBuyDetailsAction" method="execute">
   <result name="success">buyItem.jsp</result>
  </action>
 

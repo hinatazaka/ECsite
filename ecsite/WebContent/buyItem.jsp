@@ -70,7 +70,8 @@
                        <span>商品名</span>
                     </td>
                     <td>
-                       <s:property value="session.buyItem_name"/>
+                       <s:property value="itemDetailsDTO.itemName"/>
+                       <s:hidden name="id" value="%{id}" />
                     </td>
                  </tr>
                  <tr>
@@ -78,7 +79,7 @@
                        <span>値段</span>
                      </td>
                      <td>
-                        <s:property value="session.buyItem_price"/>
+                        <s:property value="itemDetailsDTO.itemPrice"/>
                            <span>円</span>
                      </td>
                  </tr>
